@@ -39,62 +39,6 @@ const  penguinsGentoo = penguins.filter(({species})=>species==="Gentoo")
 
   <h1 class="text-5xl text-center mb-8">Penguins species (Etape 3)</h1>
 
-  <nav>
-    <ul class="flex gap-2">
-      <li><a class="border-2 border-blue-600 p-2"
-      href="#Adelie">Adelie</a>
-      </li>
-      <li><a class="border-2 border-blue-600 p-2"
-      href="#Chinstrap">Chinstrap</a></li>
-      <li><a class="border-2 border-blue-600 p-2"
-      href="#Gentoo">Gentoo</a></li>
-    </ul>
-  </nav>
-
-  <div class="flex gap-2 overflow-x-auto scroll-smooth">
-    <div class="min-w-full" id="Adelie">
-      <h3 class="text-3xl"></h3>
-      <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguinsAdelie, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-    </div>
-    <div class="min-w-full"id="Chinstrap">
-      <h3 class="text-3xl"></h3>
-      <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguinsChinstrap, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-    </div>
-    <div class="min-w-full"id="Gentoo">
-      <h3 class="text-3xl"></h3>
-      <PlotFigure
-    options={{
-      marks: [
-        Plot.dot(penguinsGentoo, {
-          x: "culmen_length_mm",
-          y: "culmen_depth_mm",
-          stroke: "species",
-        }),
-      ],
-    }}
-  />
-    </div>
-  </div>
 
   <Tabs>
   <TabsList>
