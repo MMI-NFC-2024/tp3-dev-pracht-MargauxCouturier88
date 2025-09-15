@@ -9,12 +9,17 @@
    
     <div class="mb-4">
       <h1>Menu</h1>
-      <nav class="space-x-4">
-        <a href="/species/Adelie" target="penguinFrame" class="text-blue-600 hover:underline">Adelie</a>
-        <a href="/species/Chinstrap" target="penguinFrame" class="text-blue-600 hover:underline">Chinstrap</a>
-        <a href="/species/Gentoo" target="penguinFrame" class="text-blue-600 hover:underline">Gentoo</a>
-      </nav>
-    </div>
+    <select id="species">
+    <option value="Adelie">Adelie</option>
+    <option value="Chinstrap">Chinstrap</option>
+    <option value="Gentoo">Gentoo</option>
+    </select>
+    <script>
+        document.querySelector("#species")?.addEventListener("change", (evt) => {
+        const value = (evt.target as HTMLSelectElement).value;
+        location.pathname = "/species/" + value;
+        });
+    </script>
 
     <iframe
       name="penguinFrame"
@@ -25,6 +30,9 @@
     ></iframe>
 
     <script>
+      /**
+       * @param {HTMLIFrameElement} iframe
+       */
       function resizeIframe(iframe) {
         try {
           const doc = iframe.contentDocument || iframe.contentWindow.document;
