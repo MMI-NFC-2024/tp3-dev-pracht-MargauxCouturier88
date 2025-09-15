@@ -1,0 +1,38 @@
+---
+---
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Iframe</title>
+  </head>
+  <body class="font-sans bg-gray-50 text-gray-900 p-6">
+   
+    <div class="mb-4">
+      <h1>Menu</h1>
+      <nav class="space-x-4">
+        <a href="/species/Adelie" target="penguinFrame" class="text-blue-600 hover:underline">Adelie</a>
+        <a href="/species/Chinstrap" target="penguinFrame" class="text-blue-600 hover:underline">Chinstrap</a>
+        <a href="/species/Gentoo" target="penguinFrame" class="text-blue-600 hover:underline">Gentoo</a>
+      </nav>
+    </div>
+
+    <iframe
+      name="penguinFrame"
+      src="/species/Adelie"
+      class="w-full border rounded"
+      style="height:600px;"
+      onload="resizeIframe(this)"
+    ></iframe>
+
+    <script>
+      function resizeIframe(iframe) {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          iframe.style.height = doc.body.scrollHeight + "px";
+        } catch (e) {
+          console.warn("Impossible de redimensionner l'iframe :", e);
+        }
+      }
+    </script>
+  </body>
+</html>
