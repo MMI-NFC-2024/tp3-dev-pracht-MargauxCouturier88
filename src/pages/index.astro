@@ -3,6 +3,7 @@ import PlotFigure from "../components/PlotFigure.astro";
 import Layout from "../layouts/Layout.astro";
 import * as Plot from "@observablehq/plot";
 import penguins from "../assets/penguins.json";
+import { Tabs, TabsList, TabsTab, TabsPanel } from 'accessible-astro-components'
 
 const  penguinsAdelie = penguins.filter(({species})=>species==="Adelie")
 const  penguinsChinstrap = penguins.filter(({species})=>species==="Chinstrap")
@@ -94,4 +95,52 @@ const  penguinsGentoo = penguins.filter(({species})=>species==="Gentoo")
   />
     </div>
   </div>
+
+  <Tabs>
+  <TabsList>
+    <TabsTab id="Adelie" controls="panel1" selected>Adelie</TabsTab>
+    <TabsTab id="Chinstrap" controls="panel2">Chinstrap</TabsTab>
+    <TabsTab id="Gentoo" controls="panel3">Gentoo</TabsTab>
+  </TabsList>
+
+  <TabsPanel id="panel1" labelledby="tab1" selected>
+    <PlotFigure
+    options={{
+      marks: [
+        Plot.dot(penguinsAdelie, {
+          x: "culmen_length_mm",
+          y: "culmen_depth_mm",
+          stroke: "species",
+        }),
+      ],
+    }}
+  />
+  </TabsPanel>
+  <TabsPanel id="panel2" labelledby="tab2">
+    <PlotFigure
+    options={{
+      marks: [
+        Plot.dot(penguinsChinstrap, {
+          x: "culmen_length_mm",
+          y: "culmen_depth_mm",
+          stroke: "species",
+        }),
+      ],
+    }}
+  />
+  </TabsPanel>
+  <TabsPanel id="panel3" labelledby="tab3">
+    <PlotFigure
+    options={{
+      marks: [
+        Plot.dot(penguinsGentoo, {
+          x: "culmen_length_mm",
+          y: "culmen_depth_mm",
+          stroke: "species",
+        }),
+      ],
+    }}
+  />
+  </TabsPanel>
+</Tabs>
 </Layout>
