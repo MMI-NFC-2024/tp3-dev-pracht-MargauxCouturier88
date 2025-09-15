@@ -9,28 +9,34 @@ const  penguinsChinstrap = penguins.filter(({species})=>species==="Chinstrap")
 ---
 
 <Layout>
-
-<div class="bg-gray-800 text-white p-4 rounded-1xl shadow-lg">
-  <h1 class="text-xl font-bold mb-3">MENU Étape 1</h1>
+<div class="bg-gray-400 text-black p-4 rounded-1xl shadow-lg">
+  <h1 class="text-xl font-bold mb-3">MENU</h1>
   <nav class="flex gap-4">
-    <a href="/" 
-       class="px-3 py-2 rounded-lg hover:bg-gray-700 transition">
-      Retour
-    </a>
-    <a href="/species/Adelie" 
-       class="px-3 py-2 rounded-lg hover:bg-gray-700 transition">
-      Adelie
-    </a>
-    <a href="/species/Gentoo" 
-       class="px-3 py-2 rounded-lg hover:bg-gray-700 transition">
-      Gentoo
-    </a>
+    
+      <select id="species">
+    <option value="Adelie">Adelie</option>
+    <option value="Chinstrap">Chinstrap</option>
+    <option value="Gentoo">Gentoo</option>
+    </select>
+    <script>
+        document.querySelector("#species")?.addEventListener("change", (evt) => {
+        const value = (evt.target as HTMLSelectElement).value;
+        location.pathname = "/species/" + value;
+        });
+    </script>
+
     <a href="test-iframe" 
        class="px-3 py-2 rounded-lg hover:bg-gray-700 transition">
       Etape 2 (iframe)
     </a>
+
+    <a href="/" 
+       class="px-3 py-2 rounded-lg hover:bg-gray-700 transition">
+      Retour
+    </a>
   </nav>
 </div>
+
 
   <h1 class="text-5xl text-center mb-8">Penguins Chinstrap</h1>
 
